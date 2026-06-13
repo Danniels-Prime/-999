@@ -1,0 +1,475 @@
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4ff;
+  color: #2d3436;
+  min-height: 100vh;
+}
+
+button { cursor: pointer; border: none; font-family: inherit; }
+
+/* ─── App Shell ─── */
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
+}
+
+.app-header {
+  text-align: center;
+  padding: 28px 0 16px;
+}
+
+.app-title {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #6c5ce7;
+  letter-spacing: -1px;
+}
+
+.app-subtitle {
+  font-size: 1rem;
+  color: #636e72;
+  margin-top: 4px;
+}
+
+/* ─── Tabs ─── */
+.tab-nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.tab-btn {
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: #dfe6e9;
+  color: #636e72;
+  transition: all 0.2s;
+}
+
+.tab-btn--active {
+  background: #6c5ce7;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(108, 92, 231, 0.4);
+}
+
+.tab-btn:hover:not(.tab-btn--active) {
+  background: #b2bec3;
+  color: #2d3436;
+}
+
+/* ─── Section Labels ─── */
+.section-label {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #6c5ce7;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+/* ─── Vowels ─── */
+.vowel-row {
+  margin-bottom: 32px;
+}
+
+.vowel-cards {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.vowel-card {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vowel-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ─── Syllable Grid ─── */
+.syllable-grid-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.syllable-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.consonant-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.consonant-label {
+  width: 36px;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #2d3436;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.syllable-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.syllable-btn {
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition: transform 0.12s, box-shadow 0.12s;
+  min-width: 52px;
+  text-align: center;
+}
+
+.syllable-btn:hover {
+  transform: scale(1.12) translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.syllable-btn:active {
+  transform: scale(0.97);
+}
+
+/* ─── Word Builder ─── */
+.word-builder {
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.word-builder__title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #6c5ce7;
+  margin-bottom: 12px;
+}
+
+.word-builder__syllables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  min-height: 44px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.word-builder__chip {
+  background: #6c5ce7;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.word-builder__placeholder {
+  color: #b2bec3;
+  font-size: 0.95rem;
+}
+
+.word-builder__word {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #2d3436;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+.word-builder__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ─── Buttons ─── */
+.btn {
+  padding: 12px 22px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.18s;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.btn--primary {
+  background: #6c5ce7;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(108,92,231,0.4);
+}
+.btn--primary:hover { background: #5a4bd1; }
+
+.btn--secondary {
+  background: #dfe6e9;
+  color: #636e72;
+}
+.btn--secondary:hover { background: #b2bec3; }
+
+.btn--back {
+  background: transparent;
+  color: #6c5ce7;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+}
+
+.btn--listen {
+  background: #00b894;
+  color: #fff;
+  font-size: 1.05rem;
+  padding: 14px 28px;
+  box-shadow: 0 4px 14px rgba(0,184,148,0.4);
+}
+.btn--listen:hover { background: #00a381; }
+
+.btn--record {
+  background: #e17055;
+  color: #fff;
+  font-size: 1.05rem;
+  padding: 14px 28px;
+  box-shadow: 0 4px 14px rgba(225,112,85,0.4);
+}
+.btn--record:hover { background: #c0604a; }
+
+.btn--stop {
+  background: #d63031;
+  color: #fff;
+  font-size: 1.05rem;
+  padding: 14px 28px;
+  animation: pulse 1s infinite;
+  box-shadow: 0 4px 14px rgba(214,48,49,0.4);
+}
+
+.btn--reference {
+  background: #00b894;
+  color: #fff;
+  padding: 12px 20px;
+}
+.btn--reference:hover { background: #00a381; }
+
+.btn--playback {
+  background: #a29bfe;
+  color: #fff;
+  padding: 12px 20px;
+}
+.btn--playback:hover { background: #897cf0; }
+
+.btn--nav {
+  background: #dfe6e9;
+  color: #2d3436;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 50px;
+}
+.btn--nav:hover:not(:disabled) { background: #b2bec3; }
+.btn--nav:disabled { opacity: 0.35; pointer-events: none; }
+
+.btn--next {
+  background: #6c5ce7;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(108,92,231,0.35);
+}
+.btn--next:hover { background: #5a4bd1; }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(214,48,49,0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(214,48,49,0); }
+}
+
+/* ─── Level Select ─── */
+.level-select {
+  padding: 8px 0;
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+  gap: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.level-btn {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 800;
+  transition: all 0.15s;
+}
+
+.level-btn--unlocked {
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(108,92,231,0.3);
+}
+.level-btn--unlocked:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(108,92,231,0.45);
+}
+
+.level-btn--locked {
+  background: #dfe6e9;
+  color: #b2bec3;
+  font-size: 1.1rem;
+  cursor: not-allowed;
+}
+
+/* ─── Flashcard ─── */
+.flashcard-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.flashcard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flashcard-progress {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #636e72;
+}
+
+.flashcard {
+  background: #fff;
+  border-radius: 24px;
+  padding: 32px 24px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.flashcard__syllables {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flashcard__syl-btn {
+  padding: 16px 24px;
+  border-radius: 18px;
+  font-size: 1.8rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(108,92,231,0.35);
+  transition: transform 0.15s, box-shadow 0.15s;
+  min-width: 70px;
+  text-align: center;
+}
+
+.flashcard__syl-btn:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 8px 22px rgba(108,92,231,0.5);
+}
+
+.flashcard__syl-btn:active {
+  transform: scale(0.96);
+}
+
+.flashcard__word {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #2d3436;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.flashcard__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ─── Compare Box ─── */
+.compare-box {
+  background: #f8f4ff;
+  border: 2px solid #a29bfe;
+  border-radius: 16px;
+  padding: 18px 24px;
+  text-align: center;
+  width: 100%;
+}
+
+.compare-box__title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #6c5ce7;
+  margin-bottom: 12px;
+}
+
+.compare-box__buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.compare-box__hint {
+  font-size: 0.85rem;
+  color: #636e72;
+}
+
+/* ─── Flashcard Nav ─── */
+.flashcard-nav {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+  .app-title { font-size: 1.8rem; }
+  .vowel-card { width: 60px; height: 60px; font-size: 2rem; }
+  .flashcard__syl-btn { font-size: 1.4rem; padding: 12px 18px; }
+  .flashcard__word { font-size: 1.8rem; }
+  .level-grid { grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); }
+}

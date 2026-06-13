@@ -1,0 +1,27 @@
+export const VOWELS = ['a', 'e', 'i', 'o', 'u'];
+
+export const CONSONANTS = [
+  { letter: 'b', syllables: ['ba', 'be', 'bi', 'bo', 'bu'] },
+  { letter: 'c', syllables: ['ca', 'ce', 'ci', 'co', 'cu'] },
+  { letter: 'd', syllables: ['da', 'de', 'di', 'do', 'du'] },
+  { letter: 'f', syllables: ['fa', 'fe', 'fi', 'fo', 'fu'] },
+  { letter: 'g', syllables: ['ga', 'ge', 'gi', 'go', 'gu'] },
+  { letter: 'h', syllables: ['ha', 'he', 'hi', 'ho', 'hu'] },
+  { letter: 'j', syllables: ['ja', 'je', 'ji', 'jo', 'ju'] },
+  { letter: 'k', syllables: ['ka', 'ke', 'ki', 'ko', 'ku'] },
+  { letter: 'l', syllables: ['la', 'le', 'li', 'lo', 'lu'] },
+  { letter: 'll', syllables: ['lla', 'lle', 'lli', 'llo', 'llu'] },
+  { letter: 'm', syllables: ['ma', 'me', 'mi', 'mo', 'mu'] },
+  { letter: 'n', syllables: ['na', 'ne', 'ni', 'no', 'nu'] },
+  { letter: 'ñ', syllables: ['ña', 'ñe', 'ñi', 'ño', 'ñu'] },
+  { letter: 'p', syllables: ['pa', 'pe', 'pi', 'po', 'pu'] },
+  { letter: 'r', syllables: ['ra', 're', 'ri', 'ro', 'ru'] },
+  { letter: 'rr', syllables: ['rra', 'rre', 'rri', 'rro', 'rru'] },
+  { letter: 's', syllables: ['sa', 'se', 'si', 'so', 'su'] },
+  { letter: 't', syllables: ['ta', 'te', 'ti', 'to', 'tu'] },
+  { letter: 'v', syllables: ['va', 've', 'vi', 'vo', 'vu'] },
+  { letter: 'w', syllables: ['wa', 'we', 'wi', 'wo', 'wu'] },
+  { letter: 'x', syllables: ['xa', 'xe', 'xi', 'xo', 'xu'] },
+  { letter: 'y', syllables: ['ya', 'ye', 'yi', 'yo', 'yu'] },
+  { letter: 'z', syllables: ['za', 'ze', 'zi', 'zo', 'zu'] },
+];

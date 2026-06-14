@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { CONSONANTS } from '../data/phonetics';
-import SyllableCard from './SyllableCard';
 import WordBuilder from './WordBuilder';
+import { speak } from '../utils/speech';
 
 const ROW_COLORS = [
   '#FF6B6B', '#FF9F43', '#FECA57', '#1DD1A1', '#48DBFB',
@@ -28,7 +28,7 @@ export default function SyllableGrid() {
                   key={syl}
                   className="syllable-btn"
                   style={{ backgroundColor: ROW_COLORS[i % ROW_COLORS.length] }}
-                  onClick={() => addSyllable(syl)}
+                  onClick={() => { speak(syl); addSyllable(syl); }}
                   aria-label={`Sílaba ${syl}`}
                 >
                   {syl}

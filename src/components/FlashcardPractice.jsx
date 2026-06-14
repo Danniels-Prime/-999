@@ -1,9 +1,12 @@
 import { useState, useRef } from 'react';
 import { LEVELS } from '../data/words';
+import { LEVELS as EN_LEVELS } from '../data/words_en';
 import { speak } from '../utils/speech';
 import LevelSelect from './LevelSelect';
+import { useLang } from '../context/LangContext';
 
 export default function FlashcardPractice({ unlockedUpTo, completedLevels, onLevelComplete }) {
+  const lang = useLang();
   const [selectedLevel, setSelectedLevel] = useState(null);
   const [cardIndex, setCardIndex] = useState(0);
   const [recording, setRecording] = useState(false);
@@ -13,7 +16,8 @@ export default function FlashcardPractice({ unlockedUpTo, completedLevels, onLev
   const mediaRecorderRef = useRef(null);
   const chunksRef = useRef([]);
 
-  const currentWords = selectedLevel ? LEVELS[selectedLevel - 1] : [];
+  const activeLevels = lang === 'en' ? EN_LEVELS : LEVELS;
+  const currentWords = selectedLevel ? activeLevels[selectedLevel - 1] : [];
   const currentCard = currentWords[cardIndex] || null;
 
   const handleSelectLevel = (level) => {
@@ -69,7 +73,10 @@ export default function FlashcardPractice({ unlockedUpTo, completedLevels, onLev
       setRecordedUrl(null);
       setShowCompare(false);
     } catch {
-      alert('Necesitas permitir el acceso al micrófono para grabar.');
+      const msg = lang === 'en'
+        ? 'You need to allow microphone access to record.'
+        : 'Necesitas permitir el acceso al micrófono para grabar.';
+      alert(msg);
     }
   };
 
@@ -88,14 +95,16 @@ export default function FlashcardPractice({ unlockedUpTo, completedLevels, onLev
     return <LevelSelect unlockedUpTo={unlockedUpTo} completedLevels={completedLevels} onSelect={handleSelectLevel} />;
   }
 
+  const isEn = lang === 'en';
+
   return (
     <div className="flashcard-section">
       <div className="flashcard-header">
         <button className="btn btn--back" onClick={() => setSelectedLevel(null)}>
-          ← Niveles
+          {isEn ? '← Levels' : '← Niveles'}
         </button>
         <span className="flashcard-progress">
-          Nivel {selectedLevel} · {cardIndex + 1} / {currentWords.length}
+          {isEn ? 'Level' : 'Nivel'} {selectedLevel} · {cardIndex + 1} / {currentWords.length}
         </span>
       </div>
 
@@ -107,7 +116,7 @@ export default function FlashcardPractice({ unlockedUpTo, completedLevels, onLev
                 key={i}
                 className="flashcard__syl-btn"
                 onClick={() => speak(syl)}
-                aria-label={`Sílaba ${syl}`}
+                aria-label={isEn ? `Syllable ${syl}` : `Sílaba ${syl}`}
               >
                 {syl}
               </button>
@@ -118,33 +127,37 @@ export default function FlashcardPractice({ unlockedUpTo, completedLevels, onLev
 
           <div className="flashcard__actions">
             <button className="btn btn--listen" onClick={handleListen}>
-              🔊 Escuchar
+              {isEn ? '🔊 Listen' : '🔊 Escuchar'}
             </button>
 
             {!recording ? (
               <button className="btn btn--record" onClick={handleStartRecord}>
-                🎙 Grabar
+                {isEn ? '🎙 Record' : '🎙 Grabar'}
               </button>
             ) : (
               <button className="btn btn--stop" onClick={handleStopRecord}>
-                ⏹ Parar
+                {isEn ? '⏹ Stop' : '⏹ Parar'}
               </button>
             )}
           </div>
 
           {showCompare && recordedUrl && (
             <div className="compare-box">
-              <h4 className="compare-box__title">¡Compara tu pronunciación!</h4>
+              <h4 className="compare-box__title">
+                {isEn ? 'Compare your pronunciation!' : '¡Compara tu pronunciación!'}
+              </h4>
               <div className="compare-box__buttons">
                 <button className="btn btn--reference" onClick={handleListen}>
-                  🔊 Referencia
+                  {isEn ? '🔊 Reference' : '🔊 Referencia'}
                 </button>
                 <button className="btn btn--playback" onClick={handlePlayRecording}>
-                  🎧 Tu voz
+                  {isEn ? '🎧 Your voice' : '🎧 Tu voz'}
                 </button>
               </div>
               <p className="compare-box__hint">
-                ¿Suena parecido? ¡Inténtalo de nuevo si quieres mejorar!
+                {isEn
+                  ? 'Does it sound similar? Try again if you want to improve!'
+                  : '¿Suena parecido? ¡Inténtalo de nuevo si quieres mejorar!'}
               </p>
             </div>
           )}
@@ -153,10 +166,12 @@ export default function FlashcardPractice({ unlockedUpTo, completedLevels, onLev
 
       <div className="flashcard-nav">
         <button className="btn btn--nav" onClick={handlePrev} disabled={cardIndex === 0}>
-          ← Anterior
+          {isEn ? '← Previous' : '← Anterior'}
         </button>
         <button className="btn btn--nav btn--next" onClick={handleNext}>
-          {cardIndex + 1 === currentWords.length ? '✅ Completar nivel' : 'Siguiente →'}
+          {cardIndex + 1 === currentWords.length
+            ? (isEn ? '✅ Complete level' : '✅ Completar nivel')
+            : (isEn ? 'Next →' : 'Siguiente →')}
         </button>
       </div>
     </div>

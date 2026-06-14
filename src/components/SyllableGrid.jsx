@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { CONSONANTS } from '../data/phonetics';
+import { EN_CONSONANTS } from '../data/phonetics_en';
 import WordBuilder from './WordBuilder';
 import { speak } from '../utils/speech';
+import { useLang } from '../context/LangContext';
 
 const ROW_COLORS = [
   '#FF6B6B', '#FF9F43', '#FECA57', '#1DD1A1', '#48DBFB',
@@ -12,14 +14,17 @@ const ROW_COLORS = [
 ];
 
 export default function SyllableGrid() {
+  const lang = useLang();
   const [builtWord, setBuiltWord] = useState([]);
 
   const addSyllable = (syl) => setBuiltWord(prev => [...prev, syl]);
+  const consonants = lang === 'en' ? EN_CONSONANTS : CONSONANTS;
+  const ariaLabel = lang === 'en' ? 'Syllable' : 'Sílaba';
 
   return (
     <div className="syllable-grid-section">
       <div className="syllable-grid">
-        {CONSONANTS.map((row, i) => (
+        {consonants.map((row, i) => (
           <div key={row.letter} className="consonant-row">
             <span className="consonant-label">{row.letter}</span>
             <div className="syllable-row">
@@ -29,7 +34,7 @@ export default function SyllableGrid() {
                   className="syllable-btn"
                   style={{ backgroundColor: ROW_COLORS[i % ROW_COLORS.length] }}
                   onClick={() => { speak(syl); addSyllable(syl); }}
-                  aria-label={`Sílaba ${syl}`}
+                  aria-label={`${ariaLabel} ${syl}`}
                 >
                   {syl}
                 </button>

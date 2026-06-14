@@ -1,15 +1,22 @@
 import { useState } from 'react';
 import { BOOKS } from '../data/books';
+import { BOOKS_EN } from '../data/books_en';
 import { speak } from '../utils/speech';
 import { syllabify } from '../utils/syllabify';
+import { useLang } from '../context/LangContext';
 
-function BookShelf({ completedBooks, onSelect }) {
+function BookShelf({ books, completedBooks, onSelect, lang }) {
+  const isEn = lang === 'en';
   return (
     <div className="book-shelf">
-      <h2 className="section-label">📚 Mis Libros</h2>
-      <p className="book-shelf__hint">Toca una palabra para escucharla y ver sus sílabas</p>
+      <h2 className="section-label">{isEn ? '📚 My Books' : '📚 Mis Libros'}</h2>
+      <p className="book-shelf__hint">
+        {isEn
+          ? 'Tap a word to hear it and see its syllables'
+          : 'Toca una palabra para escucharla y ver sus sílabas'}
+      </p>
       <div className="book-grid">
-        {BOOKS.map(book => {
+        {books.map(book => {
           const done = completedBooks.includes(book.id);
           return (
             <button
@@ -22,7 +29,7 @@ function BookShelf({ completedBooks, onSelect }) {
               {done && <span className="book-card__check">✅</span>}
               <span className="book-card__title">{book.title}</span>
               <span className="book-card__meta">
-                {book.pages.length} páginas · +{book.bonusOnComplete} 🪙 al terminar
+                {book.pages.length} {isEn ? 'pages' : 'páginas'} · +{book.bonusOnComplete} 🪙 {isEn ? 'on finish' : 'al terminar'}
               </span>
             </button>
           );
@@ -32,11 +39,12 @@ function BookShelf({ completedBooks, onSelect }) {
   );
 }
 
-function BookReader({ book, completedBooks, onEarnSoles, onCompleteBook, onBack }) {
+function BookReader({ book, completedBooks, onEarnSoles, onCompleteBook, onBack, lang }) {
   const [page, setPage] = useState(0);
   const [selectedIdx, setSelectedIdx] = useState(null);
   const [earnedPages, setEarnedPages] = useState(new Set());
 
+  const isEn = lang === 'en';
   const totalPages = book.pages.length;
   const pageText = book.pages[page];
   const words = pageText.split(/\s+/).filter(Boolean);
@@ -76,7 +84,9 @@ function BookReader({ book, completedBooks, onEarnSoles, onCompleteBook, onBack 
   return (
     <div className="book-reader">
       <div className="book-reader__header">
-        <button className="btn btn--back" onClick={onBack}>← Libros</button>
+        <button className="btn btn--back" onClick={onBack}>
+          {isEn ? '← Books' : '← Libros'}
+        </button>
         <span className="book-reader__title">{book.icon} {book.title}</span>
         <span className="book-reader__progress">{page + 1} / {totalPages}</span>
       </div>
@@ -98,7 +108,7 @@ function BookReader({ book, completedBooks, onEarnSoles, onCompleteBook, onBack 
 
       {syls.length > 0 && (
         <div className="blend-bar">
-          <span className="blend-bar__label">Sílabas:</span>
+          <span className="blend-bar__label">{isEn ? 'Syllables:' : 'Sílabas:'}</span>
           <div className="blend-bar__syls">
             {syls.map((syl, i) => (
               <button
@@ -123,16 +133,18 @@ function BookReader({ book, completedBooks, onEarnSoles, onCompleteBook, onBack 
 
       <div className="book-reader__actions">
         <button className="btn btn--listen" onClick={() => speak(pageText)}>
-          🔊 Leer página completa
+          {isEn ? '🔊 Read full page' : '🔊 Leer página completa'}
         </button>
       </div>
 
       <div className="flashcard-nav">
         <button className="btn btn--nav" onClick={handlePrev} disabled={page === 0}>
-          ← Anterior
+          {isEn ? '← Previous' : '← Anterior'}
         </button>
         <button className="btn btn--nav btn--next" onClick={handleNext}>
-          {isLastPage ? '🎉 ¡Terminar libro!' : 'Siguiente →'}
+          {isLastPage
+            ? (isEn ? '🎉 Finish book!' : '🎉 ¡Terminar libro!')
+            : (isEn ? 'Next →' : 'Siguiente →')}
         </button>
       </div>
     </div>
@@ -140,13 +152,17 @@ function BookReader({ book, completedBooks, onEarnSoles, onCompleteBook, onBack 
 }
 
 export default function BookSection({ completedBooks, onEarnSoles, onCompleteBook }) {
+  const lang = useLang();
   const [selected, setSelected] = useState(null);
+  const books = lang === 'en' ? BOOKS_EN : BOOKS;
 
   if (!selected) {
     return (
       <BookShelf
+        books={books}
         completedBooks={completedBooks}
         onSelect={setSelected}
+        lang={lang}
       />
     );
   }
@@ -158,6 +174,7 @@ export default function BookSection({ completedBooks, onEarnSoles, onCompleteBoo
       onEarnSoles={onEarnSoles}
       onCompleteBook={onCompleteBook}
       onBack={() => setSelected(null)}
+      lang={lang}
     />
   );
 }

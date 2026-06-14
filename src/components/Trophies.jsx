@@ -1,3 +1,26 @@
+const MILESTONE_LIST = [
+  { lvl: 5,   icon: '🌱', prize: 'Primer Paso',       bonus: 5   },
+  { lvl: 10,  icon: '🥉', prize: 'Medalla de Bronce',  bonus: 10  },
+  { lvl: 15,  icon: '⭐', prize: 'Estrella Especial',  bonus: 15  },
+  { lvl: 20,  icon: '🥈', prize: 'Medalla de Plata',   bonus: 20  },
+  { lvl: 25,  icon: '💫', prize: 'Cuarto de Camino',   bonus: 25  },
+  { lvl: 30,  icon: '🏅', prize: 'Medalla de Oro',     bonus: 30  },
+  { lvl: 35,  icon: '🎯', prize: 'Tirador Experto',    bonus: 35  },
+  { lvl: 40,  icon: '💜', prize: 'Cristal Violeta',    bonus: 40  },
+  { lvl: 45,  icon: '🔮', prize: 'Bola de Cristal',    bonus: 45  },
+  { lvl: 50,  icon: '💎', prize: 'Diamante',           bonus: 50  },
+  { lvl: 55,  icon: '🌊', prize: 'Ola Poderosa',       bonus: 55  },
+  { lvl: 60,  icon: '🔥', prize: 'Llama de Fuego',     bonus: 60  },
+  { lvl: 65,  icon: '🦁', prize: 'León Valiente',      bonus: 65  },
+  { lvl: 70,  icon: '🌟', prize: 'Superestrella',      bonus: 70  },
+  { lvl: 75,  icon: '🎖', prize: 'Gran Campeón',       bonus: 75  },
+  { lvl: 80,  icon: '🏆', prize: 'Gran Trofeo',        bonus: 80  },
+  { lvl: 85,  icon: '🦅', prize: 'Águila Maestra',     bonus: 85  },
+  { lvl: 90,  icon: '👑', prize: 'Corona de Plata',    bonus: 90  },
+  { lvl: 95,  icon: '🌙', prize: 'Luna de Élite',      bonus: 95  },
+  { lvl: 100, icon: '🌈', prize: 'Corona Suprema',     bonus: 500 },
+];
+
 export default function Trophies({ trophies, soles, completedLevels }) {
   const totalLevels = 100;
   const pct = Math.round((completedLevels.length / totalLevels) * 100);
@@ -38,7 +61,7 @@ export default function Trophies({ trophies, soles, completedLevels }) {
         <div className="trophies-empty">
           <p>🎯 Completa niveles en Práctica para ganar premios</p>
           <p style={{ fontSize: '0.85rem', color: '#b2bec3', marginTop: 8 }}>
-            Cada nivel = 25 soles · Niveles especiales = premios extra
+            Cada nivel = 1 sol · Cada 5 niveles = premio especial
           </p>
         </div>
       ) : (
@@ -55,20 +78,18 @@ export default function Trophies({ trophies, soles, completedLevels }) {
       )}
 
       <div className="milestone-preview">
-        <h3 className="milestone-preview__title">Próximos premios</h3>
+        <h3 className="milestone-preview__title">Todos los premios</h3>
         <div className="milestone-list">
-          {[10,15,20,30,40,50,60,70,80,90,100].map(lvl => (
-            <div key={lvl} className={`milestone-item ${completedLevels.includes(lvl) ? 'milestone-item--done' : ''}`}>
-              <span className="milestone-level">Niv. {lvl}</span>
-              <span className="milestone-prize">
-                {completedLevels.includes(lvl) ? '✅' : '🔒'}{' '}
-                {lvl === 10 ? '🥉' : lvl === 15 ? '⭐' : lvl === 20 ? '🥈' : lvl === 30 ? '🏅' :
-                 lvl === 40 ? '💜' : lvl === 50 ? '💎' : lvl === 60 ? '🔥' : lvl === 70 ? '🌟' :
-                 lvl === 80 ? '🏆' : lvl === 90 ? '👑' : '🌈'}
-              </span>
-              <span className="milestone-bonus">+{lvl === 10 ? 50 : lvl === 15 ? 75 : lvl === 20 ? 100 : lvl === 30 ? 150 : lvl === 40 ? 175 : lvl === 50 ? 200 : lvl === 60 ? 225 : lvl === 70 ? 250 : lvl === 80 ? 300 : lvl === 90 ? 350 : 1000} 🪙</span>
-            </div>
-          ))}
+          {MILESTONE_LIST.map(({ lvl, icon, prize, bonus }) => {
+            const done = completedLevels.includes(lvl);
+            return (
+              <div key={lvl} className={`milestone-item ${done ? 'milestone-item--done' : ''}`}>
+                <span className="milestone-level">Niv. {lvl}</span>
+                <span className="milestone-prize">{done ? '✅' : icon} {prize}</span>
+                <span className="milestone-bonus">+{bonus} 🪙</span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

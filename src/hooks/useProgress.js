@@ -3,20 +3,29 @@ import { useState, useEffect } from 'react';
 const STORAGE_KEY = 'fonetica_progress';
 
 const MILESTONES = {
-  10:  { prize: '🥉 Medalla de Bronce',  bonus: 50,   message: '¡Completaste 10 niveles!' },
-  15:  { prize: '⭐ Estrella Especial',   bonus: 75,   message: '¡Nivel 15 conquistado!' },
-  20:  { prize: '🥈 Medalla de Plata',   bonus: 100,  message: '¡20 niveles dominados!' },
-  30:  { prize: '🏅 Medalla de Oro',      bonus: 150,  message: '¡30 niveles superados!' },
-  40:  { prize: '💜 Cristal Violeta',    bonus: 175,  message: '¡Increíble, 40 niveles!' },
-  50:  { prize: '💎 Diamante',           bonus: 200,  message: '¡La mitad del camino!' },
-  60:  { prize: '🔥 Llama de Fuego',     bonus: 225,  message: '¡60 niveles en llamas!' },
-  70:  { prize: '🌟 Superestrella',      bonus: 250,  message: '¡70 niveles, eres una estrella!' },
-  80:  { prize: '🏆 Gran Trofeo',        bonus: 300,  message: '¡80 niveles, campeón!' },
-  90:  { prize: '👑 Corona de Plata',    bonus: 350,  message: '¡Solo 10 más para la cima!' },
-  100: { prize: '🌈 Corona Suprema',     bonus: 1000, message: '¡LEYENDA! ¡100 niveles completados!' },
+  5:   { prize: '🌱 Primer Paso',       bonus: 5,   message: '¡Tus primeros 5 niveles!' },
+  10:  { prize: '🥉 Medalla de Bronce', bonus: 10,  message: '¡Completaste 10 niveles!' },
+  15:  { prize: '⭐ Estrella Especial',  bonus: 15,  message: '¡Nivel 15 conquistado!' },
+  20:  { prize: '🥈 Medalla de Plata',  bonus: 20,  message: '¡20 niveles dominados!' },
+  25:  { prize: '💫 Cuarto de Camino',  bonus: 25,  message: '¡Ya llevas 25 niveles!' },
+  30:  { prize: '🏅 Medalla de Oro',    bonus: 30,  message: '¡30 niveles superados!' },
+  35:  { prize: '🎯 Tirador Experto',   bonus: 35,  message: '¡35 niveles, qué puntería!' },
+  40:  { prize: '💜 Cristal Violeta',   bonus: 40,  message: '¡Increíble, 40 niveles!' },
+  45:  { prize: '🔮 Bola de Cristal',   bonus: 45,  message: '¡45 niveles, eres mágico!' },
+  50:  { prize: '💎 Diamante',          bonus: 50,  message: '¡La mitad del camino!' },
+  55:  { prize: '🌊 Ola Poderosa',      bonus: 55,  message: '¡55 niveles, imparable!' },
+  60:  { prize: '🔥 Llama de Fuego',    bonus: 60,  message: '¡60 niveles en llamas!' },
+  65:  { prize: '🦁 León Valiente',     bonus: 65,  message: '¡65 niveles, rugiste fuerte!' },
+  70:  { prize: '🌟 Superestrella',     bonus: 70,  message: '¡70 niveles, eres una estrella!' },
+  75:  { prize: '🎖 Gran Campeón',      bonus: 75,  message: '¡75 niveles, tres cuartos!' },
+  80:  { prize: '🏆 Gran Trofeo',       bonus: 80,  message: '¡80 niveles, campeón!' },
+  85:  { prize: '🦅 Águila Maestra',    bonus: 85,  message: '¡85 niveles, vuelas alto!' },
+  90:  { prize: '👑 Corona de Plata',   bonus: 90,  message: '¡Solo 10 más para la cima!' },
+  95:  { prize: '🌙 Luna de Élite',     bonus: 95,  message: '¡95 niveles, casi leyenda!' },
+  100: { prize: '🌈 Corona Suprema',    bonus: 500, message: '¡LEYENDA! ¡100 niveles completados!' },
 };
 
-const COINS_PER_LEVEL = 25;
+const COINS_PER_LEVEL = 1;
 
 const defaultState = {
   soles: 0,

@@ -2,11 +2,13 @@ import { useState } from 'react';
 import VowelRow from './components/VowelRow';
 import SyllableGrid from './components/SyllableGrid';
 import FlashcardPractice from './components/FlashcardPractice';
+import VocabBank from './components/VocabBank';
 import './App.css';
 
 const TABS = [
   { id: 'chart', label: '📖 Abecedario' },
   { id: 'practice', label: '🃏 Práctica' },
+  { id: 'vocab', label: '📝 Vocabulario' },
 ];
 
 export default function App() {
@@ -39,6 +41,7 @@ export default function App() {
           </div>
         )}
         {activeTab === 'practice' && <FlashcardPractice />}
+        {activeTab === 'vocab' && <VocabBank />}
       </main>
     </div>
   );

@@ -3,12 +3,14 @@ import VowelRow from './components/VowelRow';
 import SyllableGrid from './components/SyllableGrid';
 import FlashcardPractice from './components/FlashcardPractice';
 import VocabBank from './components/VocabBank';
+import SpanishRules from './components/SpanishRules';
 import './App.css';
 
 const TABS = [
   { id: 'chart', label: '📖 Abecedario' },
   { id: 'practice', label: '🃏 Práctica' },
   { id: 'vocab', label: '📝 Vocabulario' },
+  { id: 'rules', label: '✏️ Reglas' },
 ];
 
 export default function App() {
@@ -42,6 +44,7 @@ export default function App() {
         )}
         {activeTab === 'practice' && <FlashcardPractice />}
         {activeTab === 'vocab' && <VocabBank />}
+        {activeTab === 'rules' && <SpanishRules />}
       </main>
     </div>
   );

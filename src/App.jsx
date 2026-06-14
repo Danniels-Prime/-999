@@ -6,12 +6,14 @@ import VocabBank from './components/VocabBank';
 import SpanishRules from './components/SpanishRules';
 import Trophies from './components/Trophies';
 import CelebrationModal from './components/CelebrationModal';
+import BookSection from './components/BookSection';
 import { useProgress } from './hooks/useProgress';
 import './App.css';
 
 const TABS = [
   { id: 'chart', label: '📖 Abecedario' },
   { id: 'practice', label: '🃏 Práctica' },
+  { id: 'books', label: '📚 Libros' },
   { id: 'vocab', label: '📝 Vocabulario' },
   { id: 'rules', label: '✏️ Reglas' },
   { id: 'trophies', label: '🏆 Premios' },
@@ -19,7 +21,7 @@ const TABS = [
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('chart');
-  const { soles, unlockedUpTo, completedLevels, trophies, celebration, completeLevel, clearCelebration } = useProgress();
+  const { soles, unlockedUpTo, completedLevels, trophies, completedBooks, celebration, completeLevel, earnSoles, completeBook, clearCelebration } = useProgress();
 
   return (
     <div className="app">
@@ -57,6 +59,13 @@ export default function App() {
             unlockedUpTo={unlockedUpTo}
             completedLevels={completedLevels}
             onLevelComplete={completeLevel}
+          />
+        )}
+        {activeTab === 'books' && (
+          <BookSection
+            completedBooks={completedBooks || []}
+            onEarnSoles={earnSoles}
+            onCompleteBook={completeBook}
           />
         )}
         {activeTab === 'vocab' && <VocabBank />}

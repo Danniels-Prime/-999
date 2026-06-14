@@ -33,6 +33,7 @@ const defaultState = {
   completedLevels: [],
   trophies: [],
   lastMilestone: null,
+  completedBooks: [],
 };
 
 function load() {
@@ -85,6 +86,21 @@ export function useProgress() {
     });
   };
 
+  const earnSoles = (amount) => {
+    setState(prev => ({ ...prev, soles: prev.soles + amount }));
+  };
+
+  const completeBook = (bookId, bonus) => {
+    setState(prev => {
+      if ((prev.completedBooks || []).includes(bookId)) return prev;
+      return {
+        ...prev,
+        soles: prev.soles + bonus,
+        completedBooks: [...(prev.completedBooks || []), bookId],
+      };
+    });
+  };
+
   const clearCelebration = () => {
     setCelebration(null);
     setState(prev => ({ ...prev, lastMilestone: null }));
@@ -95,5 +111,5 @@ export function useProgress() {
     save(defaultState);
   };
 
-  return { ...state, completeLevel, celebration, clearCelebration, resetProgress };
+  return { ...state, completeLevel, earnSoles, completeBook, celebration, clearCelebration, resetProgress };
 }

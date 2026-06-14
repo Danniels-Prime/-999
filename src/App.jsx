@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import VowelRow from './components/VowelRow';
 import SyllableGrid from './components/SyllableGrid';
+import EnglishPhonicsChart from './components/EnglishPhonicsChart';
 import FlashcardPractice from './components/FlashcardPractice';
 import VocabBank from './components/VocabBank';
 import SpanishRules from './components/SpanishRules';
@@ -80,8 +81,7 @@ export default function App() {
         <main className="app-main">
           {activeTab === 'chart' && (
             <div className="chart-tab">
-              <VowelRow />
-              <SyllableGrid />
+              {lang === 'en' ? <EnglishPhonicsChart /> : <><VowelRow /><SyllableGrid /></>}
             </div>
           )}
           {activeTab === 'practice' && (

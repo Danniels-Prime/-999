@@ -5,6 +5,54 @@ import { speak } from '../utils/speech';
 import LevelSelect from './LevelSelect';
 import { useLang } from '../context/LangContext';
 
+// Example word to speak for each phonics pattern (demonstrating the sound)
+const PHONICS_EXAMPLES = {
+  'Short A': 'apple',
+  'Short E': 'egg',
+  'Short I': 'igloo',
+  'Short O': 'octopus',
+  'Short U': 'umbrella',
+  'Long A (Silent E)': 'cake',
+  'Long I (Silent E)': 'bike',
+  'Long O (Silent E)': 'home',
+  'Long U (Silent E)': 'tune',
+  'SH Digraph': 'ship',
+  'CH Digraph': 'chip',
+  'TH Digraph': 'think',
+  'WH Digraph': 'when',
+  'PH Digraph': 'phone',
+  'NG Ending': 'ring',
+  'EE Vowel Team': 'tree',
+  'EA Vowel Team': 'eat',
+  'AI Vowel Team': 'rain',
+  'AY Vowel Team': 'play',
+  'OA Vowel Team': 'boat',
+  'OW (Long O)': 'show',
+  'OO Short': 'book',
+  'OO Long': 'moon',
+  'IE Vowel Team': 'pie',
+  'UE/EW Vowel Team': 'blue',
+  'AU/AW Sound': 'saw',
+  'OI/OY Diphthong': 'coin',
+  'OU/OW Diphthong': 'cloud',
+  'R-Controlled (AR)': 'car',
+  'R-Controlled (ER)': 'fern',
+  'R-Controlled (IR)': 'bird',
+  'R-Controlled (OR)': 'corn',
+  'R-Controlled (UR)': 'turn',
+  'L-Blends': 'black',
+  'R-Blends': 'frog',
+  'S-Blends': 'snap',
+  'ST/SW Blends': 'star',
+  '-ING Suffix': 'running',
+  '-ED Suffix': 'jumped',
+  '-ER/-EST Suffix': 'faster',
+  '-FUL/-LESS Suffix': 'helpful',
+  '-TION Suffix': 'nation',
+  '-NESS Suffix': 'kindness',
+  '-MENT Suffix': 'movement',
+};
+
 export default function FlashcardPractice({ unlockedUpTo, completedLevels, onLevelComplete }) {
   const lang = useLang();
   const [selectedLevel, setSelectedLevel] = useState(null);
@@ -110,6 +158,21 @@ export default function FlashcardPractice({ unlockedUpTo, completedLevels, onLev
 
       {currentCard && (
         <div className="flashcard">
+          {isEn && currentCard.phonics && (
+            <div className="phonics-badge-row">
+              <span className="phonics-badge">{currentCard.phonics}</span>
+              {PHONICS_EXAMPLES[currentCard.phonics] && (
+                <button
+                  className="btn btn--phonics-sound"
+                  onClick={() => speak(PHONICS_EXAMPLES[currentCard.phonics])}
+                  title={`Hear example: ${PHONICS_EXAMPLES[currentCard.phonics]}`}
+                >
+                  🔉 Hear sound
+                </button>
+              )}
+            </div>
+          )}
+
           <div className="flashcard__syllables">
             {currentCard.syllables.map((syl, i) => (
               <button

@@ -3,8 +3,7 @@ import { LEVELS } from '../data/words';
 import { speak } from '../utils/speech';
 import LevelSelect from './LevelSelect';
 
-export default function FlashcardPractice() {
-  const [unlockedUpTo, setUnlockedUpTo] = useState(1);
+export default function FlashcardPractice({ unlockedUpTo, completedLevels, onLevelComplete }) {
   const [selectedLevel, setSelectedLevel] = useState(null);
   const [cardIndex, setCardIndex] = useState(0);
   const [recording, setRecording] = useState(false);
@@ -27,10 +26,7 @@ export default function FlashcardPractice() {
   const handleNext = () => {
     const next = cardIndex + 1;
     if (next >= currentWords.length) {
-      // Level complete — unlock next
-      if (selectedLevel >= unlockedUpTo) {
-        setUnlockedUpTo(prev => Math.min(prev + 1, 100));
-      }
+      onLevelComplete(selectedLevel);
       setSelectedLevel(null);
     } else {
       setCardIndex(next);
@@ -89,7 +85,7 @@ export default function FlashcardPractice() {
   };
 
   if (!selectedLevel) {
-    return <LevelSelect unlockedUpTo={unlockedUpTo} onSelect={handleSelectLevel} />;
+    return <LevelSelect unlockedUpTo={unlockedUpTo} completedLevels={completedLevels} onSelect={handleSelectLevel} />;
   }
 
   return (

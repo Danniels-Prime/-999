@@ -124,6 +124,37 @@ const DIPHTHONGS = [
   { pair: 'oo', tip: 'Long OO (moon/food) or Short OO (book/look) — context determines which.', examples: ['moon','book','food','look','cool','hook'], color: '#01CBC6' },
 ];
 
+const TRIGRAPHS = [
+  { pattern: '-tch', tip: 'THREE letters, ONE /ch/ sound. Always comes after a SHORT vowel (catch, fetch, witch). Never at the start of a word.', examples: ['catch','match','watch','fetch','witch','pitch','scratch','kitchen'], color: '#FF6B6B' },
+  { pattern: '-dge', tip: 'THREE letters, ONE /j/ sound. Just like -tch but for the J sound — used after a SHORT vowel (bridge, judge, badge).', examples: ['bridge','judge','badge','hedge','fudge','edge','lodge','ridge'], color: '#FF9F43' },
+  { pattern: '-nk', tip: 'N + K together make a NG-K sound. The N becomes a nasal NG before the K. Very common at the end of syllables.', examples: ['think','sink','bank','drink','pink','trunk','blank','chunk'], color: '#FECA57' },
+  { pattern: '-nch', tip: 'N + CH together. Say the N then immediately /ch/. Common at end of syllables (bench, branch, lunch).', examples: ['bench','ranch','lunch','inch','branch','bunch','pinch','munch'], color: '#1DD1A1' },
+];
+
+const SILENT_LETTERS = [
+  { pattern: 'kn-', tip: 'Silent K! When K comes before N at the start of a word, the K is completely silent. Only the N sound is heard.', examples: ['knife','know','knock','knight','knee','knit','knob','knew'], color: '#6c5ce7' },
+  { pattern: 'wr-', tip: 'Silent W! When W comes before R at the start of a word, the W is silent. Only the R sound is heard.', examples: ['write','wrong','wrist','wrap','wrote','wren','wreck','wrench'], color: '#e17055' },
+  { pattern: '-ight', tip: 'Silent GH! The pattern -ight has a Long I + T sound. The GH is completely silent. Very common in English.', examples: ['night','light','fight','right','sight','tight','bright','flight'], color: '#0984e3' },
+  { pattern: '-mb', tip: 'Silent B! When B comes after M at the END of a word, the B is completely silent. Only the M sound is heard.', examples: ['lamb','climb','comb','bomb','thumb','numb','crumb','limb'], color: '#fdcb6e' },
+  { pattern: '-gh = /f/', tip: 'GH sometimes sounds like F! In words like "laugh" and "cough", the GH makes an /f/ sound. Surprising!', examples: ['laugh','cough','tough','rough','enough','draft'], color: '#00b894' },
+  { pattern: '-gn', tip: 'Silent G! When G comes before N, the G is silent. Seen at the start (gnaw) and end (sign, design) of words.', examples: ['gnaw','sign','design','align','foreign','campaign'], color: '#5F27CD' },
+];
+
+const Y_VOWEL = [
+  { pattern: 'Y = /ē/', tip: 'At the END of a multi-syllable word, Y sounds like Long E. This is the most common Y-as-vowel pattern.', examples: ['baby','funny','happy','candy','city','puppy','silly','penny'], color: '#FF6B6B' },
+  { pattern: 'Y = /ī/', tip: 'At the END of a one-syllable word, Y sounds like Long I. Also in the middle of some words.', examples: ['sky','fly','cry','dry','try','my','why','fry'], color: '#FF9F43' },
+  { pattern: 'Y = /ĭ/', tip: 'Inside a word (not at the end), Y sometimes sounds like Short I — especially in Greek-origin words.', examples: ['gym','myth','symbol','crystal','system','rhythm'], color: '#FECA57' },
+  { pattern: 'ə Schwa', tip: 'The schwa /ə/ is the most common vowel sound in English! It is the lazy "uh" sound in UNSTRESSED syllables. Any vowel letter can make it.', examples: ['about','banana','pencil','above','alone','family','problem'], color: '#48DBFB' },
+];
+
+const SPECIAL_ENDINGS = [
+  { ending: '-ture', tip: 'Sounds like "cher" — not "tyoor". Very common in English nouns. The T + ure blend into one smooth sound.', examples: ['nature','future','picture','creature','mixture','texture','capture','culture'], color: '#6c5ce7' },
+  { ending: '-sion /zh/', tip: 'When -SION follows a vowel or voiced consonant, it sounds like "zhun" — a buzzing ZH sound. Like "vision", "decision".', examples: ['vision','television','decision','explosion','invasion','revision','division','conclusion'], color: '#e17055' },
+  { ending: '-sion /sh/', tip: 'When -SION follows a consonant like T or S, it sounds like "shun" — same as -TION. Like "mission", "tension".', examples: ['mission','tension','mansion','passion','fashion','session','version','pension'], color: '#0984e3' },
+  { ending: '-cious/-tious', tip: 'These endings both sound like "shus". Turns nouns into adjectives meaning "full of" or "having the quality of".', examples: ['delicious','precious','nutritious','ambitious','spacious','ferocious'], color: '#fdcb6e' },
+  { ending: '-cial/-tial', tip: 'Both sound like "shul". Adjective endings that come from Latin. "Special", "partial" — the CI and TI both say /sh/.', examples: ['special','social','official','partial','initial','potential'], color: '#00b894' },
+];
+
 const CATEGORIES = [
   { id: 'short', label: '🔴 Short Vowels', count: 5 },
   { id: 'long', label: '🔵 Long Vowels', count: 5 },
@@ -134,6 +165,10 @@ const CATEGORIES = [
   { id: 'rctrl', label: '🟡 R-Controlled', count: 5 },
   { id: 'endings', label: '🩷 Word Endings', count: 10 },
   { id: 'diphthongs', label: '🟩 Diphthongs', count: 8 },
+  { id: 'trigraphs', label: '🔶 Trigraphs', count: 4 },
+  { id: 'silent', label: '⬜ Silent Letters', count: 6 },
+  { id: 'yvowel', label: '🔷 Y & Schwa', count: 4 },
+  { id: 'special', label: '🌀 Special Endings', count: 5 },
 ];
 
 // Always speak the first example word — avoids TTS reading letter names instead of sounds
@@ -299,6 +334,42 @@ export default function EnglishPhonicsChart() {
             <p className="pc-desc">Diphthongs are GLIDING vowel sounds — your mouth moves from one position to another within a single syllable. They are smooth vowel slides.</p>
             <div className="pc-grid">
               {DIPHTHONGS.map(d => <PatternCard key={d.pair} symbol={d.pair} tip={d.tip} examples={d.examples} color={d.color} />)}
+            </div>
+          </>
+        )}
+
+        {cat === 'trigraphs' && (
+          <>
+            <p className="pc-desc">Trigraphs are THREE letters that make ONE sound. The most important ones are -tch and -dge — both come after a short vowel and never start a word.</p>
+            <div className="pc-grid">
+              {TRIGRAPHS.map(t => <PatternCard key={t.pattern} symbol={t.pattern} tip={t.tip} examples={t.examples} color={t.color} />)}
+            </div>
+          </>
+        )}
+
+        {cat === 'silent' && (
+          <>
+            <p className="pc-desc">Silent letters are written but not spoken. English has many! Knowing these patterns lets you decode words that look tricky at first glance.</p>
+            <div className="pc-grid">
+              {SILENT_LETTERS.map(s => <PatternCard key={s.pattern} symbol={s.pattern} tip={s.tip} examples={s.examples} color={s.color} />)}
+            </div>
+          </>
+        )}
+
+        {cat === 'yvowel' && (
+          <>
+            <p className="pc-desc">The letter Y acts as a vowel in many English words. Its sound depends on its position. The schwa is the most common vowel sound in spoken English!</p>
+            <div className="pc-grid">
+              {Y_VOWEL.map(y => <PatternCard key={y.pattern} symbol={y.pattern} tip={y.tip} examples={y.examples} color={y.color} />)}
+            </div>
+          </>
+        )}
+
+        {cat === 'special' && (
+          <>
+            <p className="pc-desc">These advanced endings come from Latin and Greek roots. The letters don't sound the way you'd expect — once you learn the pattern, hundreds of words unlock!</p>
+            <div className="pc-grid">
+              {SPECIAL_ENDINGS.map(e => <PatternCard key={e.ending} symbol={e.ending} tip={e.tip} examples={e.examples} color={e.color} />)}
             </div>
           </>
         )}

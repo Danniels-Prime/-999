@@ -51,6 +51,22 @@ const PHONICS_EXAMPLES = {
   '-TION Suffix': 'nation',
   '-NESS Suffix': 'kindness',
   '-MENT Suffix': 'movement',
+  '-TCH Trigraph': 'catch',
+  '-DGE Trigraph': 'bridge',
+  '-NK Ending': 'think',
+  '-NCH Ending': 'bench',
+  'Silent KN': 'knife',
+  'Silent WR': 'write',
+  '-IGHT Silent GH': 'night',
+  'GH as /f/': 'laugh',
+  'Silent MB': 'lamb',
+  'Y = Long I': 'sky',
+  'Y = Long E': 'baby',
+  'Y = Short I': 'gym',
+  'Schwa (ə)': 'about',
+  '-TURE Ending': 'nature',
+  '-SION /zh/ Ending': 'vision',
+  '-SION /sh/ Ending': 'mission',
 };
 
 export default function FlashcardPractice({ unlockedUpTo, completedLevels, onLevelComplete }) {

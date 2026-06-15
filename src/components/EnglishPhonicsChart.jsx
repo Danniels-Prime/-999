@@ -16,11 +16,11 @@ const SHORT_VOWELS = [
 ];
 
 const LONG_VOWELS = [
-  { symbol: 'ā', label: 'Long A', sound: 'ay',  tip: 'Say the letter name "ay". Your jaw lifts at the end.', examples: ['ape','acorn','age','cake','rain','play'], color: '#FF6B6B' },
-  { symbol: 'ē', label: 'Long E', sound: 'ee',  tip: 'Stretch your smile wide. Long held sound. Like "eagle".', examples: ['eagle','eat','even','feet','tree','bean'], color: '#FF9F43' },
-  { symbol: 'ī', label: 'Long I', sound: 'eye', tip: 'Start open, then close your mouth. Two sounds glide together.', examples: ['ice','ivy','idea','bike','kite','fly'], color: '#FECA57' },
-  { symbol: 'ō', label: 'Long O', sound: 'oh',  tip: 'Round your lips and say "oh". Hold the sound.', examples: ['ocean','open','over','home','bone','show'], color: '#48DBFB' },
-  { symbol: 'ū', label: 'Long U', sound: 'oo',  tip: 'Round your lips tight then open. Say "you" or "oo".', examples: ['unicorn','use','unit','cute','tune','fuse'], color: '#FF9FF3' },
+  { symbol: 'ā', label: 'Long A', sound: 'ei',  soundLang: 'es-ES', tip: 'Say the letter name "ay". Your jaw lifts at the end.', examples: ['ape','acorn','age','cake','rain','play'], color: '#FF6B6B' },
+  { symbol: 'ē', label: 'Long E', sound: 'i',   soundLang: 'es-ES', tip: 'Stretch your smile wide. Long held sound. Like "eagle".', examples: ['eagle','eat','even','feet','tree','bean'], color: '#FF9F43' },
+  { symbol: 'ī', label: 'Long I', sound: 'ai',  soundLang: 'es-ES', tip: 'Start open, then close your mouth. Two sounds glide together.', examples: ['ice','ivy','idea','bike','kite','fly'], color: '#FECA57' },
+  { symbol: 'ō', label: 'Long O', sound: 'o',   soundLang: 'es-ES', tip: 'Round your lips and say "oh". Hold the sound.', examples: ['ocean','open','over','home','bone','show'], color: '#48DBFB' },
+  { symbol: 'ū', label: 'Long U', sound: 'u',   soundLang: 'es-ES', tip: 'Round your lips tight then open. Say "you" or "oo".', examples: ['unicorn','use','unit','cute','tune','fuse'], color: '#FF9FF3' },
 ];
 
 const CONSONANTS = [
@@ -48,14 +48,14 @@ const CONSONANTS = [
 ];
 
 const DIGRAPHS = [
-  { letters: 'ch', sound: 'cha',  tip: 'Start with tongue touching roof (like T), then release into SH. Two letters — ONE sound.', examples: ['chip','chop','chin','bench','teach','cheese'], color: '#FF6B6B' },
+  { letters: 'ch', sound: 'cha',  soundLang: 'es-ES', tip: 'Start with tongue touching roof (like T), then release into SH. Two letters — ONE sound.', examples: ['chip','chop','chin','bench','teach','cheese'], color: '#FF6B6B' },
   { letters: 'sh', sound: 'sha',  tip: 'Push lips slightly forward. Air streams out softly. Shhh! No voice.', examples: ['ship','shop','shell','fish','brush','flash'], color: '#FF9F43' },
   { letters: 'th', sound: 'thin', tip: '(Voiceless) Put tongue lightly between teeth. BLOW air out. No hum. "think", "thumb", "bath".', examples: ['think','thumb','thin','bath','teeth','path'], color: '#FECA57' },
   { letters: 'TH', sound: 'the',  tip: '(Voiced) Same position, but HUM with voice. Feel it buzz! "this", "that", "the", "with".', examples: ['this','that','them','with','bathe','those'], color: '#48DBFB' },
   { letters: 'wh', sound: 'when', tip: 'Blow air through rounded lips, like saying HW together quickly.', examples: ['when','where','what','wheel','while','white'], color: '#FF9FF3' },
   { letters: 'ph', sound: 'fuh',  tip: 'Looks like PH, sounds exactly like F. Top teeth on bottom lip, blow.', examples: ['phone','photo','graph','dolphin','elephant','phrase'], color: '#54A0FF' },
-  { letters: 'ng', sound: 'ang',  tip: 'Hum through your NOSE with back of tongue touching roof. No pop or click at end.', examples: ['ring','song','bang','king','lung','swing'], color: '#5F27CD' },
-  { letters: 'ck', sound: 'ack',  tip: 'Use CK — never KK — after a SHORT vowel. Makes one K sound.', examples: ['back','duck','kick','lock','truck','block'], color: '#01CBC6' },
+  { letters: 'ng', sound: 'ang',  soundLang: 'es-ES', tip: 'Hum through your NOSE with back of tongue touching roof. No pop or click at end.', examples: ['ring','song','bang','king','lung','swing'], color: '#5F27CD' },
+  { letters: 'ck', sound: 'ak',   soundLang: 'es-ES', tip: 'Use CK — never KK — after a SHORT vowel. Makes one K sound.', examples: ['back','duck','kick','lock','truck','block'], color: '#01CBC6' },
 ];
 
 const BLENDS = [
@@ -129,16 +129,16 @@ const DIPHTHONGS = [
 ];
 
 const TRIGRAPHS = [
-  { pattern: '-tch', sound: 'cha',   tip: 'THREE letters, ONE /ch/ sound. Always comes after a SHORT vowel (catch, fetch, witch). Never at the start of a word.', examples: ['catch','match','watch','fetch','witch','pitch','scratch','kitchen'], color: '#FF6B6B' },
-  { pattern: '-dge', sound: 'juh',   tip: 'THREE letters, ONE /j/ sound. Just like -tch but for the J sound — used after a SHORT vowel (bridge, judge, badge).', examples: ['bridge','judge','badge','hedge','fudge','edge','lodge','ridge'], color: '#FF9F43' },
-  { pattern: '-nk',  sound: 'ink',   tip: 'N + K together make a NG-K sound. The N becomes a nasal NG before the K. Very common at the end of syllables.', examples: ['think','sink','bank','drink','pink','trunk','blank','chunk'], color: '#FECA57' },
-  { pattern: '-nch', sound: 'inch',  tip: 'N + CH together. Say the N then immediately /ch/. Common at end of syllables (bench, branch, lunch).', examples: ['bench','ranch','lunch','inch','branch','bunch','pinch','munch'], color: '#1DD1A1' },
+  { pattern: '-tch', sound: 'cha',  soundLang: 'es-ES', tip: 'THREE letters, ONE /ch/ sound. Always comes after a SHORT vowel (catch, fetch, witch). Never at the start of a word.', examples: ['catch','match','watch','fetch','witch','pitch','scratch','kitchen'], color: '#FF6B6B' },
+  { pattern: '-dge', sound: 'juh',                      tip: 'THREE letters, ONE /j/ sound. Just like -tch but for the J sound — used after a SHORT vowel (bridge, judge, badge).', examples: ['bridge','judge','badge','hedge','fudge','edge','lodge','ridge'], color: '#FF9F43' },
+  { pattern: '-nk',  sound: 'ink',  soundLang: 'es-ES', tip: 'N + K together make a NG-K sound. The N becomes a nasal NG before the K. Very common at the end of syllables.', examples: ['think','sink','bank','drink','pink','trunk','blank','chunk'], color: '#FECA57' },
+  { pattern: '-nch', sound: 'inch', soundLang: 'es-ES', tip: 'N + CH together. Say the N then immediately /ch/. Common at end of syllables (bench, branch, lunch).', examples: ['bench','ranch','lunch','inch','branch','bunch','pinch','munch'], color: '#1DD1A1' },
 ];
 
 const SILENT_LETTERS = [
   { pattern: 'kn-',     sound: 'nuh', tip: 'Silent K! When K comes before N at the start of a word, the K is completely silent. Only the N sound is heard.', examples: ['knife','know','knock','knight','knee','knit','knob','knew'], color: '#6c5ce7' },
   { pattern: 'wr-',     sound: 'ruh', tip: 'Silent W! When W comes before R at the start of a word, the W is silent. Only the R sound is heard.', examples: ['write','wrong','wrist','wrap','wrote','wren','wreck','wrench'], color: '#e17055' },
-  { pattern: '-ight',   sound: 'ite', tip: 'Silent GH! The pattern -ight has a Long I + T sound. The GH is completely silent. Very common in English.', examples: ['night','light','fight','right','sight','tight','bright','flight'], color: '#0984e3' },
+  { pattern: '-ight',   sound: 'ait', soundLang: 'es-ES', tip: 'Silent GH! The pattern -ight has a Long I + T sound. The GH is completely silent. Very common in English.', examples: ['night','light','fight','right','sight','tight','bright','flight'], color: '#0984e3' },
   { pattern: '-mb',     sound: 'muh', tip: 'Silent B! When B comes after M at the END of a word, the B is completely silent. Only the M sound is heard.', examples: ['lamb','climb','comb','bomb','thumb','numb','crumb','limb'], color: '#fdcb6e' },
   { pattern: 'gh = /f/',sound: 'fuh', tip: 'GH sometimes sounds like F! In words like "laugh" and "cough", the GH makes an /f/ sound. Surprising!', examples: ['laugh','cough','tough','rough','enough','draft'], color: '#00b894' },
   { pattern: '-gn',     sound: 'nuh', tip: 'Silent G! When G comes before N, the G is silent. Seen at the start (gnaw) and end (sign, design) of words.', examples: ['gnaw','sign','design','align','foreign','campaign'], color: '#5F27CD' },
@@ -179,10 +179,12 @@ const CATEGORIES = [
    Big symbol button → speaks `sound` (the phoneme/pattern sound itself)
    Small example chips → speak the full word
    ──────────────────────────────────────────────────────────────────────── */
-function SoundCard({ symbol, label, tip, examples, color, sound }) {
+// soundLang: if 'es-ES', the big button speaks using Spanish TTS (better for
+// sounds en-US TTS mangles). Example chips always use the current app language.
+function SoundCard({ symbol, label, tip, examples, color, sound, soundLang }) {
   return (
     <div className="pc-card" style={{ borderColor: color }}>
-      <button className="pc-symbol" style={{ background: color }} onClick={() => speak(sound)}>
+      <button className="pc-symbol" style={{ background: color }} onClick={() => speak(sound, 0.75, soundLang || null)}>
         {symbol}
       </button>
       <div className="pc-label">{label}</div>
@@ -198,11 +200,11 @@ function SoundCard({ symbol, label, tip, examples, color, sound }) {
   );
 }
 
-function PatternCard({ symbol, label, tip, examples, color, sound }) {
+function PatternCard({ symbol, label, tip, examples, color, sound, soundLang }) {
   const c = color || '#6c5ce7';
   return (
     <div className="pc-card" style={{ borderColor: c }}>
-      <button className="pc-symbol" style={{ background: c }} onClick={() => speak(sound)}>
+      <button className="pc-symbol" style={{ background: c }} onClick={() => speak(sound, 0.75, soundLang || null)}>
         {symbol}
       </button>
       {label && <div className="pc-label">{label}</div>}
@@ -240,7 +242,7 @@ export default function EnglishPhonicsChart() {
           <>
             <p className="pc-desc">Tap the big colored button to hear the sound. Tap any word chip to hear the full word.</p>
             <div className="pc-grid">
-              {SHORT_VOWELS.map(v => <SoundCard key={v.symbol} symbol={v.symbol} label={v.label} tip={v.tip} examples={v.examples} color={v.color} sound={v.sound} />)}
+              {SHORT_VOWELS.map(v => <SoundCard key={v.symbol} symbol={v.symbol} label={v.label} tip={v.tip} examples={v.examples} color={v.color} sound={v.sound} soundLang={v.soundLang} />)}
             </div>
           </>
         )}
@@ -249,7 +251,7 @@ export default function EnglishPhonicsChart() {
           <>
             <p className="pc-desc">Long vowels "say their letter name." Tap the big button to hear the pure sound, then tap a word to hear it in context.</p>
             <div className="pc-grid">
-              {LONG_VOWELS.map(v => <SoundCard key={v.symbol} symbol={v.symbol} label={v.label} tip={v.tip} examples={v.examples} color={v.color} sound={v.sound} />)}
+              {LONG_VOWELS.map(v => <SoundCard key={v.symbol} symbol={v.symbol} label={v.label} tip={v.tip} examples={v.examples} color={v.color} sound={v.sound} soundLang={v.soundLang} />)}
             </div>
           </>
         )}
@@ -281,7 +283,7 @@ export default function EnglishPhonicsChart() {
           <>
             <p className="pc-desc">Digraphs are TWO letters that make ONE single sound. Tap the big button to hear just the sound. Notice TH has two versions — voiced and voiceless.</p>
             <div className="pc-grid">
-              {DIGRAPHS.map(d => <PatternCard key={d.letters + d.tip} symbol={d.letters} tip={d.tip} examples={d.examples} color={d.color} sound={d.sound} />)}
+              {DIGRAPHS.map(d => <PatternCard key={d.letters + d.tip} symbol={d.letters} tip={d.tip} examples={d.examples} color={d.color} sound={d.sound} soundLang={d.soundLang} />)}
             </div>
           </>
         )}
@@ -313,7 +315,7 @@ export default function EnglishPhonicsChart() {
           <>
             <p className="pc-desc">Vowel teams are two vowels side by side that make ONE sound. Tap the big button to hear the sound, tap a word to hear it in context.</p>
             <div className="pc-grid">
-              {VOWEL_TEAMS.map(t => <PatternCard key={t.team} symbol={t.team} tip={t.tip} examples={t.examples} color={t.color} sound={t.sound} />)}
+              {VOWEL_TEAMS.map(t => <PatternCard key={t.team} symbol={t.team} tip={t.tip} examples={t.examples} color={t.color} sound={t.sound} soundLang={t.soundLang} />)}
             </div>
           </>
         )}
@@ -322,7 +324,7 @@ export default function EnglishPhonicsChart() {
           <>
             <p className="pc-desc">When a vowel is followed by R, the R "controls" the vowel sound. Tap the big button to hear the R-controlled sound. ER, IR, and UR all sound the same!</p>
             <div className="pc-grid">
-              {R_CONTROLLED.map(r => <PatternCard key={r.pattern} symbol={r.pattern} tip={r.tip} examples={r.examples} color={r.color} sound={r.sound} />)}
+              {R_CONTROLLED.map(r => <PatternCard key={r.pattern} symbol={r.pattern} tip={r.tip} examples={r.examples} color={r.color} sound={r.sound} soundLang={r.soundLang} />)}
             </div>
           </>
         )}
@@ -331,7 +333,7 @@ export default function EnglishPhonicsChart() {
           <>
             <p className="pc-desc">Word endings (suffixes) change a word's meaning or grammar. Tap the big button to hear just the suffix sound, then tap a word to hear it in a full word.</p>
             <div className="pc-grid">
-              {WORD_ENDINGS.map(e => <PatternCard key={e.ending} symbol={e.ending} tip={e.tip} examples={e.examples} color={e.color} sound={e.sound} />)}
+              {WORD_ENDINGS.map(e => <PatternCard key={e.ending} symbol={e.ending} tip={e.tip} examples={e.examples} color={e.color} sound={e.sound} soundLang={e.soundLang} />)}
             </div>
           </>
         )}
@@ -340,7 +342,7 @@ export default function EnglishPhonicsChart() {
           <>
             <p className="pc-desc">Diphthongs are GLIDING vowel sounds — your mouth moves from one position to another. Tap the big button to hear the glide, then tap a word.</p>
             <div className="pc-grid">
-              {DIPHTHONGS.map(d => <PatternCard key={d.pair} symbol={d.pair} tip={d.tip} examples={d.examples} color={d.color} sound={d.sound} />)}
+              {DIPHTHONGS.map(d => <PatternCard key={d.pair} symbol={d.pair} tip={d.tip} examples={d.examples} color={d.color} sound={d.sound} soundLang={d.soundLang} />)}
             </div>
           </>
         )}
@@ -349,7 +351,7 @@ export default function EnglishPhonicsChart() {
           <>
             <p className="pc-desc">Trigraphs are THREE letters that make ONE sound. Tap the big button to hear the actual sound produced by the pattern, then tap a word.</p>
             <div className="pc-grid">
-              {TRIGRAPHS.map(t => <PatternCard key={t.pattern} symbol={t.pattern} tip={t.tip} examples={t.examples} color={t.color} sound={t.sound} />)}
+              {TRIGRAPHS.map(t => <PatternCard key={t.pattern} symbol={t.pattern} tip={t.tip} examples={t.examples} color={t.color} sound={t.sound} soundLang={t.soundLang} />)}
             </div>
           </>
         )}
@@ -358,7 +360,7 @@ export default function EnglishPhonicsChart() {
           <>
             <p className="pc-desc">Silent letters are written but not spoken. Tap the big button to hear the sound you actually say — without the silent letter.</p>
             <div className="pc-grid">
-              {SILENT_LETTERS.map(s => <PatternCard key={s.pattern} symbol={s.pattern} tip={s.tip} examples={s.examples} color={s.color} sound={s.sound} />)}
+              {SILENT_LETTERS.map(s => <PatternCard key={s.pattern} symbol={s.pattern} tip={s.tip} examples={s.examples} color={s.color} sound={s.sound} soundLang={s.soundLang} />)}
             </div>
           </>
         )}
@@ -367,7 +369,7 @@ export default function EnglishPhonicsChart() {
           <>
             <p className="pc-desc">The letter Y acts as a vowel in many words. Tap the big button to hear which sound it makes in each position. The schwa is English's most common vowel!</p>
             <div className="pc-grid">
-              {Y_VOWEL.map(y => <PatternCard key={y.pattern} symbol={y.pattern} tip={y.tip} examples={y.examples} color={y.color} sound={y.sound} />)}
+              {Y_VOWEL.map(y => <PatternCard key={y.pattern} symbol={y.pattern} tip={y.tip} examples={y.examples} color={y.color} sound={y.sound} soundLang={y.soundLang} />)}
             </div>
           </>
         )}
@@ -376,7 +378,7 @@ export default function EnglishPhonicsChart() {
           <>
             <p className="pc-desc">Advanced endings from Latin and Greek. Tap the big button to hear the suffix sound itself, then tap a word to hear it in a full word.</p>
             <div className="pc-grid">
-              {SPECIAL_ENDINGS.map(e => <PatternCard key={e.ending} symbol={e.ending} tip={e.tip} examples={e.examples} color={e.color} sound={e.sound} />)}
+              {SPECIAL_ENDINGS.map(e => <PatternCard key={e.ending} symbol={e.ending} tip={e.tip} examples={e.examples} color={e.color} sound={e.sound} soundLang={e.soundLang} />)}
             </div>
           </>
         )}

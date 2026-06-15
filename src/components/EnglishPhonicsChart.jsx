@@ -34,13 +34,13 @@ const CONSONANTS = [
   { letter: 'k', sound: 'kuh',  tip: 'Back of tongue touches roof. Quick release. No voice.', examples: ['kite','king','keep','desk'], color: '#e17055' },
   { letter: 'l', sound: 'luh',  tip: 'Tongue tip touches behind top teeth. Air flows around the SIDES.', examples: ['lamp','lake','lip','bell'], color: '#0984e3' },
   { letter: 'm', sound: 'mmm',  tip: 'Press lips together. Hum through your NOSE. Feel it vibrate!', examples: ['moon','map','milk','swim'], color: '#6c5ce7' },
-  { letter: 'n', sound: 'nnn',  tip: 'Tongue behind top teeth. Hum through your NOSE. Air goes out nose.', examples: ['nest','nap','net','spin'], color: '#00b894' },
+  { letter: 'n', sound: 'nun',  tip: 'Tongue behind top teeth. Hum through your NOSE. Air goes out nose.', examples: ['nest','nap','net','spin'], color: '#00b894' },
   { letter: 'p', sound: 'puh',  tip: 'Press lips together, then pop. Same as B but NO voice.', examples: ['pan','pet','pop','stop'], color: '#fdcb6e' },
   { letter: 'q', sound: 'kwuh', tip: 'Always comes with U. QU sounds like KW. Never QU without U!', examples: ['queen','quick','quiz','quit'], color: '#e17055' },
   { letter: 'r', sound: 'ruh',  tip: 'Curl tongue back slightly. Do not touch the roof. Voice ON.', examples: ['rain','run','red','frog'], color: '#0984e3' },
   { letter: 's', sound: 'sss',  tip: 'Hiss like a snake! Air flows over tongue tip. No voice.', examples: ['sun','sit','seed','cats'], color: '#6c5ce7' },
   { letter: 't', sound: 'tuh',  tip: 'Tongue tip behind top teeth. Quick tap. NO voice (unlike D).', examples: ['top','ten','tip','best'], color: '#00b894' },
-  { letter: 'v', sound: 'vvv',  tip: 'Top teeth on bottom lip. Buzz. Voice ON (unlike F).', examples: ['van','vet','vine','five'], color: '#fdcb6e' },
+  { letter: 'v', sound: 'vuh',  tip: 'Top teeth on bottom lip. Buzz. Voice ON (unlike F).', examples: ['van','vet','vine','five'], color: '#fdcb6e' },
   { letter: 'w', sound: 'wuh',  tip: 'Round your lips into a tiny O, then open and say the vowel.', examples: ['well','web','win','twin'], color: '#e17055' },
   { letter: 'x', sound: 'ks',   tip: 'End of word: KS sound (box). Start of word: Z sound (xylophone).', examples: ['fox','box','wax','mix'], color: '#0984e3' },
   { letter: 'y', sound: 'yuh',  tip: 'As consonant: glide from EE quickly into next sound. As vowel: sounds like I or E.', examples: ['yell','yak','yes','yard'], color: '#6c5ce7' },
@@ -111,7 +111,7 @@ const WORD_ENDINGS = [
   { ending: '-est',  sound: 'est',  tip: 'Superlative — the MOST of something.', examples: ['fastest','tallest','coldest','biggest','smartest'], color: '#0984e3' },
   { ending: '-ful',  sound: 'ful',  tip: 'Means "full of". Turns nouns into adjectives.', examples: ['helpful','beautiful','careful','powerful','playful'], color: '#fdcb6e' },
   { ending: '-less', sound: 'less', tip: 'Means "without". The opposite of -ful.', examples: ['hopeless','careless','fearless','helpless','endless'], color: '#6c5ce7' },
-  { ending: '-tion', sound: 'shun', tip: 'Turns a verb into a noun. Sounds like "shun".', examples: ['nation','station','action','motion','vacation'], color: '#00b894' },
+  { ending: '-tion', sound: 'shen', tip: 'Turns a verb into a noun. Sounds like "shen".', examples: ['nation','station','action','motion','vacation'], color: '#00b894' },
   { ending: '-ness', sound: 'ness', tip: 'Turns an adjective into a noun. "Kind" → "kindness".', examples: ['kindness','darkness','happiness','sadness','goodness'], color: '#e17055' },
   { ending: '-ment', sound: 'ment', tip: 'Turns a verb into a noun. "Move" → "movement".', examples: ['movement','payment','excitement','statement','treatment'], color: '#0984e3' },
   { ending: '-ly',   sound: 'lee',  tip: 'Turns an adjective into an adverb. Describes HOW something is done.', examples: ['quickly','slowly','kindly','loudly','carefully'], color: '#fdcb6e' },
@@ -147,16 +147,16 @@ const SILENT_LETTERS = [
 const Y_VOWEL = [
   { pattern: 'Y = /ē/', sound: 'ee',  tip: 'At the END of a multi-syllable word, Y sounds like Long E. This is the most common Y-as-vowel pattern.', examples: ['baby','funny','happy','candy','city','puppy','silly','penny'], color: '#FF6B6B' },
   { pattern: 'Y = /ī/', sound: 'eye', tip: 'At the END of a one-syllable word, Y sounds like Long I. Also in the middle of some words.', examples: ['sky','fly','cry','dry','try','my','why','fry'], color: '#FF9F43' },
-  { pattern: 'Y = /ĭ/', sound: 'ih',  tip: 'Inside a word (not at the end), Y sometimes sounds like Short I — especially in Greek-origin words.', examples: ['gym','myth','symbol','crystal','system','rhythm'], color: '#FECA57' },
-  { pattern: 'ə Schwa', sound: 'uh',  tip: 'The schwa /ə/ is the most common vowel sound in English! It is the lazy "uh" sound in UNSTRESSED syllables. Any vowel letter can make it.', examples: ['about','banana','pencil','above','alone','family','problem'], color: '#48DBFB' },
+  { pattern: 'Y = /ĭ/', sound: 'i',   tip: 'Inside a word (not at the end), Y sometimes sounds like Short I — especially in Greek-origin words.', examples: ['gym','myth','symbol','crystal','system','rhythm'], color: '#FECA57' },
+  { pattern: 'ə Schwa', sound: 'ah',  tip: 'The schwa /ə/ is the most common vowel sound in English! It is the lazy "uh" sound in UNSTRESSED syllables. Any vowel letter can make it.', examples: ['about','banana','pencil','above','alone','family','problem'], color: '#48DBFB' },
 ];
 
 const SPECIAL_ENDINGS = [
   { ending: '-ture',       sound: 'tur',     tip: 'Sounds like "tur" (cher). Very common in English nouns. The T + ure blend into one smooth sound.', examples: ['nature','future','picture','creature','mixture','texture','capture','culture'], color: '#6c5ce7' },
   { ending: '-sion /zh/',  sound: 'vision',  tip: 'When -SION follows a vowel, it sounds like "zhun" — a buzzing ZH sound. Like "vision", "decision".', examples: ['vision','television','decision','explosion','invasion','revision','division','conclusion'], color: '#e17055' },
-  { ending: '-sion /sh/',  sound: 'shun',    tip: 'When -SION follows a consonant like T or S, it sounds like "shun" — same as -TION. Like "mission", "tension".', examples: ['mission','tension','mansion','passion','fashion','session','version','pension'], color: '#0984e3' },
-  { ending: '-cious/-tious',sound: 'shus',   tip: 'These endings both sound like "shus". Turns nouns into adjectives meaning "full of" or "having the quality of".', examples: ['delicious','precious','nutritious','ambitious','spacious','ferocious'], color: '#fdcb6e' },
-  { ending: '-cial/-tial', sound: 'shul',    tip: 'Both sound like "shul". Adjective endings that come from Latin. "Special", "partial" — the CI and TI both say /sh/.', examples: ['special','social','official','partial','initial','potential'], color: '#00b894' },
+  { ending: '-sion /sh/',  sound: 'shen',    tip: 'When -SION follows a consonant like T or S, it sounds like "shen" — same as -TION. Like "mission", "tension".', examples: ['mission','tension','mansion','passion','fashion','session','version','pension'], color: '#0984e3' },
+  { ending: '-cious/-tious',sound: 'shes',   tip: 'These endings both sound like "shes". Turns nouns into adjectives meaning "full of" or "having the quality of".', examples: ['delicious','precious','nutritious','ambitious','spacious','ferocious'], color: '#fdcb6e' },
+  { ending: '-cial/-tial', sound: 'shel',    tip: 'Both sound like "shel". Adjective endings that come from Latin. "Special", "partial" — the CI and TI both say /sh/.', examples: ['special','social','official','partial','initial','potential'], color: '#00b894' },
 ];
 
 const CATEGORIES = [

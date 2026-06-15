@@ -48,7 +48,7 @@ const PHONICS_EXAMPLES = {
   '-ED Suffix': 'jumped',
   '-ER/-EST Suffix': 'faster',
   '-FUL/-LESS Suffix': 'helpful',
-  '-TION Suffix': 'nation',
+  '-TION Suffix': 'shen',
   '-NESS Suffix': 'kindness',
   '-MENT Suffix': 'movement',
   '-TCH Trigraph': 'catch',

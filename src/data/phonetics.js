@@ -25,3 +25,18 @@ export const CONSONANTS = [
   { letter: 'y', syllables: ['ya', 'ye', 'yi', 'yo', 'yu'] },
   { letter: 'z', syllables: ['za', 'ze', 'zi', 'zo', 'zu'] },
 ];
+
+export const CLUSTERS = [
+  { letters: 'bl', syllables: ['bla', 'ble', 'bli', 'blo', 'blu'] },
+  { letters: 'br', syllables: ['bra', 'bre', 'bri', 'bro', 'bru'] },
+  { letters: 'cl', syllables: ['cla', 'cle', 'cli', 'clo', 'clu'] },
+  { letters: 'cr', syllables: ['cra', 'cre', 'cri', 'cro', 'cru'] },
+  { letters: 'dr', syllables: ['dra', 'dre', 'dri', 'dro', 'dru'] },
+  { letters: 'fl', syllables: ['fla', 'fle', 'fli', 'flo', 'flu'] },
+  { letters: 'fr', syllables: ['fra', 'fre', 'fri', 'fro', 'fru'] },
+  { letters: 'gl', syllables: ['gla', 'gle', 'gli', 'glo', 'glu'] },
+  { letters: 'gr', syllables: ['gra', 'gre', 'gri', 'gro', 'gru'] },
+  { letters: 'pl', syllables: ['pla', 'ple', 'pli', 'plo', 'plu'] },
+  { letters: 'pr', syllables: ['pra', 'pre', 'pri', 'pro', 'pru'] },
+  { letters: 'tr', syllables: ['tra', 'tre', 'tri', 'tro', 'tru'] },
+];

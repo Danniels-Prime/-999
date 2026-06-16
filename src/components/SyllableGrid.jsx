@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CONSONANTS } from '../data/phonetics';
+import { CONSONANTS, CLUSTERS } from '../data/phonetics';
 import { EN_CONSONANTS } from '../data/phonetics_en';
 import WordBuilder from './WordBuilder';
 import { speak } from '../utils/speech';
@@ -43,6 +43,33 @@ export default function SyllableGrid() {
           </div>
         ))}
       </div>
+
+      {lang === 'es' && (
+        <div className="clusters-section">
+          <h3 className="clusters-title">Sílabas Trabadas</h3>
+          <div className="syllable-grid">
+            {CLUSTERS.map((row, i) => (
+              <div key={row.letters} className="consonant-row">
+                <span className="consonant-label">{row.letters}</span>
+                <div className="syllable-row">
+                  {row.syllables.map(syl => (
+                    <button
+                      key={syl}
+                      className="syllable-btn"
+                      style={{ backgroundColor: ROW_COLORS[i % ROW_COLORS.length] }}
+                      onClick={() => { speak(syl); addSyllable(syl); }}
+                      aria-label={`Sílaba ${syl}`}
+                    >
+                      {syl}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <WordBuilder syllables={builtWord} onClear={() => setBuiltWord([])} />
     </div>
   );

@@ -105,6 +105,22 @@ button { cursor: pointer; border: none; font-family: inherit; }
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
+/* ─── Clusters Section ─── */
+.clusters-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.clusters-title {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #6c5ce7;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
 /* ─── Syllable Grid ─── */
 .syllable-grid-section {
   display: flex;

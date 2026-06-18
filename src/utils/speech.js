@@ -1,7 +1,9 @@
 let _lang = 'es-ES';
 
 export function setLang(lang) {
-  _lang = lang === 'en' ? 'en-US' : 'es-ES';
+  if (lang === 'en') _lang = 'en-US';
+  else if (lang === 'ru') _lang = 'ru-RU';
+  else _lang = 'es-ES';
 }
 
 export function speak(text, rate = 0.75, langOverride = null) {

@@ -814,7 +814,25 @@ button { cursor: pointer; border: none; font-family: inherit; }
 .header-soles__value { font-size: 1.3rem; }
 .header-soles__label { font-size: 0.85rem; opacity: 0.9; }
 
-/* ─── Language Toggle ─── */
+/* ─── Language Selector (3 flags) ─── */
+.lang-selector {
+  display: flex;
+  gap: 4px;
+}
+.lang-btn {
+  background: rgba(255,255,255,0.15);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 4px 8px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.18s;
+  line-height: 1;
+}
+.lang-btn:hover { background: rgba(255,255,255,0.35); }
+.lang-btn--active { border-color: #fff; background: rgba(255,255,255,0.3); }
+
+/* ─── Language Toggle (legacy, kept for safety) ─── */
 .lang-toggle {
   background: #fff;
   border: 2px solid #6c5ce7;

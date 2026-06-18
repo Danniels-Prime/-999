@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import VowelRow from './components/VowelRow';
 import SyllableGrid from './components/SyllableGrid';
 import EnglishPhonicsChart from './components/EnglishPhonicsChart';
+import RussianPhonicsChart from './components/RussianPhonicsChart';
 import FlashcardPractice from './components/FlashcardPractice';
 import VocabBank from './components/VocabBank';
 import SpanishRules from './components/SpanishRules';
@@ -23,20 +24,24 @@ export default function App() {
     setSpeechLang(lang);
   }, [lang]);
 
-  const TABS = lang === 'es' ? [
-    { id: 'chart', label: '📖 Abecedario' },
-    { id: 'practice', label: '🃏 Práctica' },
-    { id: 'books', label: '📚 Libros' },
-    { id: 'vocab', label: '📝 Vocabulario' },
-    { id: 'rules', label: '✏️ Reglas' },
-    { id: 'trophies', label: '🏆 Premios' },
+  const TABS = lang === 'ru' ? [
+    { id: 'chart',    label: '📖 Алфавит'    },
+    { id: 'practice', label: '🃏 Практика'   },
+    { id: 'trophies', label: '🏆 Награды'    },
+  ] : lang === 'es' ? [
+    { id: 'chart',    label: '📖 Abecedario'  },
+    { id: 'practice', label: '🃏 Práctica'    },
+    { id: 'books',    label: '📚 Libros'      },
+    { id: 'vocab',    label: '📝 Vocabulario' },
+    { id: 'rules',    label: '✏️ Reglas'      },
+    { id: 'trophies', label: '🏆 Premios'     },
   ] : [
-    { id: 'chart', label: '📖 Alphabet' },
-    { id: 'practice', label: '🃏 Practice' },
-    { id: 'books', label: '📚 Books' },
-    { id: 'vocab', label: '📝 Vocabulary' },
-    { id: 'rules', label: '✏️ Rules' },
-    { id: 'trophies', label: '🏆 Awards' },
+    { id: 'chart',    label: '📖 Alphabet'    },
+    { id: 'practice', label: '🃏 Practice'    },
+    { id: 'books',    label: '📚 Books'       },
+    { id: 'vocab',    label: '📝 Vocabulary'  },
+    { id: 'rules',    label: '✏️ Rules'       },
+    { id: 'trophies', label: '🏆 Awards'      },
   ];
 
   return (
@@ -44,11 +49,13 @@ export default function App() {
       <div className="app">
         <header className="app-header">
           <h1 className="app-title">
-            {lang === 'es' ? '🗣 Fonética Española' : '🗣 English Phonics'}
+            {lang === 'es' ? '🗣 Fonética Española' : lang === 'ru' ? '🗣 Русская Фонетика' : '🗣 English Phonics'}
           </h1>
           <p className="app-subtitle">
             {lang === 'es'
               ? 'Aprende a leer en español, sílaba por sílaba'
+              : lang === 'ru'
+              ? 'Учись читать по-русски, слог за слогом'
               : 'Learn to read English, syllable by syllable'}
           </p>
           <div className="header-controls">
@@ -57,12 +64,11 @@ export default function App() {
               <span className="header-soles__value">{soles}</span>
               <span className="header-soles__label">soles</span>
             </div>
-            <button
-              className="lang-toggle"
-              onClick={() => setLang(l => l === 'es' ? 'en' : 'es')}
-            >
-              {lang === 'es' ? '🇺🇸 English' : '🇪🇸 Español'}
-            </button>
+            <div className="lang-selector">
+              <button className={`lang-btn ${lang === 'es' ? 'lang-btn--active' : ''}`} onClick={() => setLang('es')} title="Español">🇪🇸</button>
+              <button className={`lang-btn ${lang === 'en' ? 'lang-btn--active' : ''}`} onClick={() => setLang('en')} title="English">🇺🇸</button>
+              <button className={`lang-btn ${lang === 'ru' ? 'lang-btn--active' : ''}`} onClick={() => setLang('ru')} title="Русский">🇷🇺</button>
+            </div>
           </div>
         </header>
 
@@ -81,7 +87,7 @@ export default function App() {
         <main className="app-main">
           {activeTab === 'chart' && (
             <div className="chart-tab">
-              {lang === 'en' ? <EnglishPhonicsChart /> : <><VowelRow /><SyllableGrid /></>}
+              {lang === 'en' ? <EnglishPhonicsChart /> : lang === 'ru' ? <RussianPhonicsChart /> : <><VowelRow /><SyllableGrid /></>}
             </div>
           )}
           {activeTab === 'practice' && (

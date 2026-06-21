@@ -10,8 +10,10 @@ import EnglishRules from './components/EnglishRules';
 import Trophies from './components/Trophies';
 import CelebrationModal from './components/CelebrationModal';
 import BookSection from './components/BookSection';
+import TranslationOverlay, { TranslateFab } from './components/TranslationOverlay';
 import { useProgress } from './hooks/useProgress';
 import { LangContext } from './context/LangContext';
+import { TranslationProvider } from './context/TranslationContext';
 import { setLang as setSpeechLang } from './utils/speech';
 import './App.css';
 
@@ -45,6 +47,7 @@ export default function App() {
   ];
 
   return (
+    <TranslationProvider>
     <LangContext.Provider value={lang}>
       <div className="app">
         <header className="app-header">
@@ -123,6 +126,9 @@ export default function App() {
           />
         )}
       </div>
+      <TranslateFab />
+      <TranslationOverlay />
     </LangContext.Provider>
+    </TranslationProvider>
   );
 }

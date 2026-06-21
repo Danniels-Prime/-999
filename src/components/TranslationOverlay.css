@@ -1,0 +1,280 @@
+.translate-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #6c5ce7;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(108, 92, 231, 0.5);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  touch-action: manipulation;
+}
+.translate-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(108, 92, 231, 0.65);
+}
+
+.translation-overlay {
+  position: fixed;
+  bottom: 92px;
+  right: 16px;
+  width: min(420px, calc(100vw - 32px));
+  max-height: calc(100vh - 120px);
+  background: #1e1e2e;
+  border: 1px solid #3d3d5c;
+  border-radius: 16px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  z-index: 9001;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: overlayIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+.overlay-drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #2a2a3e;
+  cursor: grab;
+  user-select: none;
+  border-bottom: 1px solid #3d3d5c;
+  border-radius: 16px 16px 0 0;
+}
+.overlay-drag-handle:active { cursor: grabbing; }
+
+.overlay-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #a29bfe;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.overlay-title-icon {
+  font-size: 16px;
+}
+
+.overlay-header-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.overlay-icon-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: color 0.15s, background 0.15s;
+}
+.overlay-icon-btn:hover { color: #fff; background: #3d3d5c; }
+
+.overlay-lang-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #252538;
+  border-bottom: 1px solid #3d3d5c;
+}
+
+.overlay-lang-select {
+  flex: 1;
+  background: #1e1e2e;
+  color: #e0e0f0;
+  border: 1px solid #3d3d5c;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%23888'%3E%3Cpath d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 26px;
+}
+.overlay-lang-select:focus { border-color: #6c5ce7; }
+
+.overlay-swap-btn {
+  background: #3d3d5c;
+  border: none;
+  color: #a29bfe;
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, transform 0.2s;
+}
+.overlay-swap-btn:hover { background: #6c5ce7; color: #fff; transform: rotate(180deg); }
+
+.overlay-detected-badge {
+  font-size: 11px;
+  color: #6c5ce7;
+  padding: 0 14px 6px;
+  background: #252538;
+}
+
+.overlay-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.overlay-input-area {
+  position: relative;
+  padding: 12px 14px 6px;
+  background: #252538;
+  border-bottom: 1px solid #3d3d5c;
+}
+
+.overlay-textarea {
+  width: 100%;
+  min-height: 80px;
+  max-height: 140px;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  color: #e0e0f0;
+  font-size: 15px;
+  line-height: 1.5;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.overlay-textarea::placeholder { color: #555; }
+
+.overlay-input-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px 0 8px;
+}
+
+.overlay-translate-btn {
+  background: #6c5ce7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s, transform 0.1s;
+}
+.overlay-translate-btn:hover { background: #5a4bd1; }
+.overlay-translate-btn:active { transform: scale(0.97); }
+.overlay-translate-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.overlay-output-area {
+  position: relative;
+  padding: 12px 14px;
+  background: #1e1e2e;
+  min-height: 80px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.overlay-output-text {
+  color: #c8c8e8;
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin: 0;
+  min-height: 40px;
+}
+
+.overlay-output-text.placeholder { color: #444; font-style: italic; }
+
+.overlay-output-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.overlay-copy-btn {
+  background: #2a2a3e;
+  border: 1px solid #3d3d5c;
+  color: #a29bfe;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.overlay-copy-btn:hover { background: #3d3d5c; color: #fff; }
+.overlay-copy-btn.copied { color: #00b894; border-color: #00b894; }
+
+.overlay-error {
+  color: #e17055;
+  font-size: 13px;
+  padding: 6px 14px;
+  background: rgba(225, 112, 85, 0.08);
+}
+
+.overlay-footer {
+  padding: 6px 14px;
+  background: #2a2a3e;
+  border-top: 1px solid #3d3d5c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.overlay-footer-text {
+  font-size: 10px;
+  color: #555;
+  letter-spacing: 0.3px;
+}
+
+.overlay-footer-link {
+  font-size: 10px;
+  color: #6c5ce7;
+  text-decoration: none;
+}
+.overlay-footer-link:hover { text-decoration: underline; }
+
+.overlay-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
